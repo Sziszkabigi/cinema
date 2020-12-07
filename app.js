@@ -87,3 +87,36 @@ const populateUI = () => {
 
     populateFromLocalStorage();
 };
+
+populateUI();
+
+movieSelected.addEventListener("change", e => {
+    ticketPrice = e.target.value;
+    localStorage.setItem("selectedMovieIndex", movieSelected.selectedIndex);
+    updateCounterAndPrice();
+});
+
+seatsContainer.addEventListener("click", e => {
+    if (
+        e.target.classList.contains("available-seat") &&
+        !e.target.classList.contains("occupied")
+    ) {
+        e.target.classList.toggle("selected");
+        updateCounterAndPrice();
+        updateSelectedSeatsList();
+    }
+});
+
+resetButton.addEventListener("click", () => {
+    document
+        .querySelectorAll(".seats .available-seat.selected")
+        .forEach(seat => seat.classList.remove("selected"));
+
+    counter.innerText = 0;
+    price.innerText = 0;
+
+    movieSelected.selectedIndex = 0;
+    ticketPrice = movieSelected.value;
+
+    localStorage.clear();
+});
