@@ -24,5 +24,5 @@ const seatsDetails = {
     columns: 8,
     occupied: [11, 12, 28, 29, 35, 36, 37, 38, 44]
 };
-
 export { movieList, seatsDetails };
+/* add some comment to
